@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState, type ReactNode } from "react";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   BookOpen,
   ChevronLeft,
@@ -39,7 +39,7 @@ const iconMap = {
   insights: Lightbulb,
 };
 
-export function BrandTrailShell({ children }: { children: React.ReactNode }) {
+export function BrandTrailShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (router) => router.location.pathname });
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -139,10 +139,10 @@ export function BrandTrailShell({ children }: { children: React.ReactNode }) {
                 title={collapsed ? item.label : undefined}
                 variant="ghost"
               >
-                <a href={item.path} className="flex h-full w-full items-center gap-3">
+                <Link to={item.path} className="flex h-full w-full items-center gap-3">
                   <Icon aria-hidden="true" className="size-[18px] shrink-0" />
                   {!collapsed && <span className="truncate">{item.label}</span>}
-                </a>
+                </Link>
               </Button>
             );
           })}
