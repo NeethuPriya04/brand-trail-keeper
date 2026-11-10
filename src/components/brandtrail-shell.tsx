@@ -89,10 +89,11 @@ export function BrandTrailShell({ children }: { children: ReactNode }) {
     await navigate({ to: "/login", replace: true });
   };
 
-  const navigation = profile ? getRoleNavigation(profile.role) : [];
-  const roleClass = profile?.role === "creator"
+  const normalizedRole = profile?.role.trim().toLowerCase() ?? "";
+  const navigation = profile ? getRoleNavigation(normalizedRole) : [];
+  const roleClass = normalizedRole === "creator"
     ? "bg-role-creator/10 text-role-creator"
-    : profile?.role === "reviewer"
+    : normalizedRole === "reviewer"
       ? "bg-role-reviewer/10 text-role-reviewer"
       : "bg-role-manager/10 text-role-manager";
 
@@ -139,7 +140,7 @@ export function BrandTrailShell({ children }: { children: ReactNode }) {
                 title={collapsed ? item.label : undefined}
                 variant="ghost"
               >
-                <Link to={item.path} className="flex h-full w-full items-center gap-3">
+                <Link to={item.path} className="flex w-full items-center gap-3">
                   <Icon aria-hidden="true" className="size-[18px] shrink-0" />
                   {!collapsed && <span className="truncate">{item.label}</span>}
                 </Link>
