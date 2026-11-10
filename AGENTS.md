@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Keep signed-in pages under one pathless authenticated layout and derive navigation from the existing profile role; this centralizes access checks and keeps the shell aligned with Supabase profile data.

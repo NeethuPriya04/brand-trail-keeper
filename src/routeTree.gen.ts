@@ -10,33 +10,161 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AuthenticatedChangeImpactRouteImport } from './routes/_authenticated.change-impact'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated.dashboard'
+import { Route as AuthenticatedEvidenceLedgerRouteImport } from './routes/_authenticated.evidence-ledger'
+import { Route as AuthenticatedGuidelineInsightsRouteImport } from './routes/_authenticated.guideline-insights'
+import { Route as AuthenticatedKnowledgeHubRouteImport } from './routes/_authenticated.knowledge-hub'
+import { Route as AuthenticatedMySubmissionsRouteImport } from './routes/_authenticated.my-submissions'
+import { Route as AuthenticatedNewSubmissionRouteImport } from './routes/_authenticated.new-submission'
+import { Route as AuthenticatedReviewCentreRouteImport } from './routes/_authenticated.review-centre'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedChangeImpactRoute =
+  AuthenticatedChangeImpactRouteImport.update({
+    id: '/change-impact',
+    path: '/change-impact',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedEvidenceLedgerRoute =
+  AuthenticatedEvidenceLedgerRouteImport.update({
+    id: '/evidence-ledger',
+    path: '/evidence-ledger',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGuidelineInsightsRoute =
+  AuthenticatedGuidelineInsightsRouteImport.update({
+    id: '/guideline-insights',
+    path: '/guideline-insights',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedKnowledgeHubRoute =
+  AuthenticatedKnowledgeHubRouteImport.update({
+    id: '/knowledge-hub',
+    path: '/knowledge-hub',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMySubmissionsRoute =
+  AuthenticatedMySubmissionsRouteImport.update({
+    id: '/my-submissions',
+    path: '/my-submissions',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedNewSubmissionRoute =
+  AuthenticatedNewSubmissionRouteImport.update({
+    id: '/new-submission',
+    path: '/new-submission',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedReviewCentreRoute =
+  AuthenticatedReviewCentreRouteImport.update({
+    id: '/review-centre',
+    path: '/review-centre',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/change-impact': typeof AuthenticatedChangeImpactRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/evidence-ledger': typeof AuthenticatedEvidenceLedgerRoute
+  '/guideline-insights': typeof AuthenticatedGuidelineInsightsRoute
+  '/knowledge-hub': typeof AuthenticatedKnowledgeHubRoute
+  '/my-submissions': typeof AuthenticatedMySubmissionsRoute
+  '/new-submission': typeof AuthenticatedNewSubmissionRoute
+  '/review-centre': typeof AuthenticatedReviewCentreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/change-impact': typeof AuthenticatedChangeImpactRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/evidence-ledger': typeof AuthenticatedEvidenceLedgerRoute
+  '/guideline-insights': typeof AuthenticatedGuidelineInsightsRoute
+  '/knowledge-hub': typeof AuthenticatedKnowledgeHubRoute
+  '/my-submissions': typeof AuthenticatedMySubmissionsRoute
+  '/new-submission': typeof AuthenticatedNewSubmissionRoute
+  '/review-centre': typeof AuthenticatedReviewCentreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/login': typeof LoginRoute
+  '/_authenticated/change-impact': typeof AuthenticatedChangeImpactRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/evidence-ledger': typeof AuthenticatedEvidenceLedgerRoute
+  '/_authenticated/guideline-insights': typeof AuthenticatedGuidelineInsightsRoute
+  '/_authenticated/knowledge-hub': typeof AuthenticatedKnowledgeHubRoute
+  '/_authenticated/my-submissions': typeof AuthenticatedMySubmissionsRoute
+  '/_authenticated/new-submission': typeof AuthenticatedNewSubmissionRoute
+  '/_authenticated/review-centre': typeof AuthenticatedReviewCentreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/change-impact'
+    | '/dashboard'
+    | '/evidence-ledger'
+    | '/guideline-insights'
+    | '/knowledge-hub'
+    | '/my-submissions'
+    | '/new-submission'
+    | '/review-centre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/change-impact'
+    | '/dashboard'
+    | '/evidence-ledger'
+    | '/guideline-insights'
+    | '/knowledge-hub'
+    | '/my-submissions'
+    | '/new-submission'
+    | '/review-centre'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/login'
+    | '/_authenticated/change-impact'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/evidence-ledger'
+    | '/_authenticated/guideline-insights'
+    | '/_authenticated/knowledge-hub'
+    | '/_authenticated/my-submissions'
+    | '/_authenticated/new-submission'
+    | '/_authenticated/review-centre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +176,108 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/change-impact': {
+      id: '/_authenticated/change-impact'
+      path: '/change-impact'
+      fullPath: '/change-impact'
+      preLoaderRoute: typeof AuthenticatedChangeImpactRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/evidence-ledger': {
+      id: '/_authenticated/evidence-ledger'
+      path: '/evidence-ledger'
+      fullPath: '/evidence-ledger'
+      preLoaderRoute: typeof AuthenticatedEvidenceLedgerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/guideline-insights': {
+      id: '/_authenticated/guideline-insights'
+      path: '/guideline-insights'
+      fullPath: '/guideline-insights'
+      preLoaderRoute: typeof AuthenticatedGuidelineInsightsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/knowledge-hub': {
+      id: '/_authenticated/knowledge-hub'
+      path: '/knowledge-hub'
+      fullPath: '/knowledge-hub'
+      preLoaderRoute: typeof AuthenticatedKnowledgeHubRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/my-submissions': {
+      id: '/_authenticated/my-submissions'
+      path: '/my-submissions'
+      fullPath: '/my-submissions'
+      preLoaderRoute: typeof AuthenticatedMySubmissionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/new-submission': {
+      id: '/_authenticated/new-submission'
+      path: '/new-submission'
+      fullPath: '/new-submission'
+      preLoaderRoute: typeof AuthenticatedNewSubmissionRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/review-centre': {
+      id: '/_authenticated/review-centre'
+      path: '/review-centre'
+      fullPath: '/review-centre'
+      preLoaderRoute: typeof AuthenticatedReviewCentreRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedChangeImpactRoute: typeof AuthenticatedChangeImpactRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedEvidenceLedgerRoute: typeof AuthenticatedEvidenceLedgerRoute
+  AuthenticatedGuidelineInsightsRoute: typeof AuthenticatedGuidelineInsightsRoute
+  AuthenticatedKnowledgeHubRoute: typeof AuthenticatedKnowledgeHubRoute
+  AuthenticatedMySubmissionsRoute: typeof AuthenticatedMySubmissionsRoute
+  AuthenticatedNewSubmissionRoute: typeof AuthenticatedNewSubmissionRoute
+  AuthenticatedReviewCentreRoute: typeof AuthenticatedReviewCentreRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedChangeImpactRoute: AuthenticatedChangeImpactRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedEvidenceLedgerRoute: AuthenticatedEvidenceLedgerRoute,
+  AuthenticatedGuidelineInsightsRoute: AuthenticatedGuidelineInsightsRoute,
+  AuthenticatedKnowledgeHubRoute: AuthenticatedKnowledgeHubRoute,
+  AuthenticatedMySubmissionsRoute: AuthenticatedMySubmissionsRoute,
+  AuthenticatedNewSubmissionRoute: AuthenticatedNewSubmissionRoute,
+  AuthenticatedReviewCentreRoute: AuthenticatedReviewCentreRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
