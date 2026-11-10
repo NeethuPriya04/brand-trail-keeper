@@ -31,3 +31,4 @@ use the editor.
 
 ## Application architecture
 - Keep signed-in pages under one pathless authenticated layout and derive navigation from the existing profile role; this centralizes access checks and keeps the shell aligned with Supabase profile data.
+- Keep Knowledge Hub presentation separate from route wiring, with searchable category rules isolated for unit testing; this makes the data views testable without database access.
